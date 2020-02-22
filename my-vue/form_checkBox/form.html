@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="keywords" content="表单，组件" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title> 表单 </title>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+       <div id="app">
+       <!-- 复选框 -->
+        <input type="checkbox" id="Jack" value="Jack" v-model='checkList'/>
+          <label for="Jack">Jack</label>
+          <input type="checkbox" id="Tom" value="Tom" v-model='checkList'/>
+          <label for="Tom">Tom</label>          
+          <input type="checkbox" id="Mick" value="Mick" v-model='checkList'/>
+          <label for="Mick">Mick</label>
+          <br/>
+          <span>Checked: {{ checkList }} </span>
+          <br/>
+        <!-- 单个复选框 -->
+        <input type="checkbox" id="check" v-model='checked'/>
+        <label for="check">{{ checked }}</label> 
+        </div>
+        <!-- 其实主要在于v-model的使用，无论是单选框还是复选框，都应该注意v-model所处位置
+         当然，这里面还有一个知识点，关于lable for，for属性后跟input的id名        -->
+        <script src="./form.js"></script>
+    </body>
+</html>

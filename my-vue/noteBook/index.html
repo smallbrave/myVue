@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小白记事本</title>
+    <script src="../lib/vue.js"></script>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>小白记事本</h1>
+        </header>
+        <main>
+            <input type="text" v-model="job" @keyup.enter="add" />
+            <ul class="content">
+                <li v-for="(item,index) in lists" :key="index">
+                    <span>{{ index + 1 }}.</span>
+                    <span>{{ item }}</span>
+                    <span class="del" @click="deleteThis">x</span>
+                </li>
+            </ul>
+            <div class="footer" v-if="lists.length > 0 ">
+                <span>{{lists.length}} items left</span>
+                <span class="all" @click="deleteAll">clear</span>
+            </div>
+        </main>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>

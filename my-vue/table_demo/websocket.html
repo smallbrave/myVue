@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <title> websocket </title>
+    </head>
+    <body>
+       <input type="text" name="usrName" id="usr" placeholder="请输入..."/>
+    <script>
+    function setup(){
+        var output = document.getElementById("usr");
+        var ws = new WebSocket('ws://echo.websocket.org/echo');
+        ws.onopen = function(){
+            console.log("connected");
+    //只有在建立了连接过后，才可以进行数据的传输
+            sendMessage("Hello WebSocket!");
+        }
+        ws.onclose = function(e){
+    //关闭连接       
+         console.log("disconnect:"+ e);
+        }
+    //错误的捕捉    
+        ws.onerror = function(e){
+          console.log("Error");
+        }
+    //获取服务端返回的数据    
+        ws.onmessage = function(e){
+         console.log("Message received:"+e.data);
+         ws.onclose(); 
+        }
+    //通过调用send函数来发送信息    
+        function sendMessage(msg){
+          ws.send(msg);
+          console.log("Message sent");
+        }
+    }
+        setup();
+    </script> 
+    </body>
+</html>

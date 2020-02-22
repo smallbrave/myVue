@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    width: 400px;
+    margin: 100px auto;
+    text-align: center;
+    padding-bottom: 30px;
+    background-color: #f5f4f6;
+}
+
+h1 {
+    color: #ba6c63;
+    font-weight: 200;
+    padding: 20px 0;
+}
+
+#app main {
+    width: 200px;
+    margin: 10px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+main input {
+    display: inline-block;
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+ul li {
+    list-style: none;
+    border-top: 1px solid #ccc;
+}
+
+li span {
+    float: left;
+}
+
+li::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.del {
+    float: right;
+    margin-right: 20px;
+}
+
+li .del {
+    visibility: hidden;
+}
+
+li:hover .del {
+    visibility: visible;
+    cursor: pointer;
+}
+
+#app .footer {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+.footer span {
+    flex: 1;
+}
+
+.footer span:first-child {
+    text-align: left;
+}
+
+.footer span:last-child {
+    text-align: right;
+}
+
+.all {
+    cursor: pointer;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transitionGroup DIY</title>
+    <script src="../lib/vue.js"></script>
+    <style>
+        li {
+            margin: 10px;
+            background-color: aquamarine;
+        }
+        
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+        }
+        
+        .v-enter-active,
+        .v-leave-active {
+            transition: all .8s ease;
+        }
+    </style>
+</head>
+<!-- transitionGroup有appear和tag属性，appear属性用于页面加载时就开始动画，tag用于指定包含内部列表的标签。 -->
+
+<body>
+    <div id="app">
+        序号：
+        <input type="text" v-model='id' /> 姓名：
+        <input type="text" v-model='name' />
+        <input type="submit" value="添加" @click='add' />
+        <transition-group appear tag="ul">
+            <li v-for="(item,index) in items" :key="index" @click='del(index)'>{{ item.id }} ---- {{ item.name }}</li>
+        </transition-group>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                items: [{
+                    id: 1,
+                    name: 'kangkang'
+                }, {
+                    id: 2,
+                    name: 'kangkang'
+                }, {
+                    id: 3,
+                    name: 'kangkang'
+                }],
+
+            },
+            methods: {
+                add() {
+                    var item = {
+                        id: this.id,
+                        name: this.name,
+                    }
+                    this.items.push(item);
+                    this.id = '';
+                    this.name = '';
+                },
+                del(index) {
+                    this.items.splice(index, 1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
