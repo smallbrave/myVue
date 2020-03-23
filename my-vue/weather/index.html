@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天知道</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>天知道</h1>
+        </header>
+        <main>
+            <div class="search">
+                <input type="text" v-model="city" @keyup.enter="search" />
+                <input type="submit" value="搜索" @click="search">
+            </div>
+            <div class="hot">
+                <span v-for="(item,index) in hots" :key="index" @click="searchItem(item)">{{ item }}</span>
+            </div>
+            <div class="content">
+                <div class="detail" v-for="(item,index) in lists" :key="index">
+                    <h1>{{ item.wea }}</h1>
+                    <p>低温{{ item.tem2 }}℃ ~ 高温 {{ item.tem1 }}℃</p>
+                    <p>{{ item.date }} {{ item.week }}</p>
+                    <p> {{ item.city }} </p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>

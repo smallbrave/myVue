@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <span class="logo"></span>
+            <input type="text" v-model="keywords" @keyup.enter="getMusic" />
+        </header>
+        <main>
+            <ul class="leftPart">
+                <li v-for="(item,index) in songs" :key="item.id" @click="open(item)">
+                    <span class="logo iconfont icon-bofang"></span>
+                    <span>{{item.name}}</span>
+                    <span v-if="false">y</span>
+                </li>
+            </ul>
+            <div class="middle">
+                <div class="box" :class="{circle: playing }">
+                    <img :src="sing.source">
+                </div>
+                <span>{{sing.name}}</span>
+            </div>
+            <aside class="rightPart">
+                <span v-if="hotComments.length > 0">热门评论</span>
+                <span v-else>暂无评论</span>
+                <ul class="hotComments">
+                    <li v-for="(item,index) in hotComments" :key="index">
+                        <p class="usr">
+                            <img :src="item.user.avatarUrl">
+                            <span>{{item.user.nickname}}</span>
+                            <span>{{ new Date(item.time) }}</span>
+                        </p>
+                        <p class="content">
+                            {{item.content}}
+                        </p>
+                    </li>
+                </ul>
+            </aside>
+        </main>
+        <footer>
+            <audio @play="play" @pause="pause" controls id="myAudio" autoplay loop :src="netSong" ref="myAudio"></audio>
+        </footer>
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
